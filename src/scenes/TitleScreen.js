@@ -21,7 +21,7 @@ export default class TitleScreen extends GameScene {
             'Game Title',
             {
                 color: 'black',
-                fontFamily: 'VT323, sans-serif',
+                fontFamily: 'sans-serif',
                 fontSize: '30px'
             }
         );
