@@ -1,4 +1,6 @@
 import GameScene from './GameScene';
+import createController from '../util/controller';
+import config from '../config';
 
 export default class TitleScreen extends GameScene {
     constructor() {
@@ -6,7 +8,7 @@ export default class TitleScreen extends GameScene {
     }
 
     init() {
-
+    
     }
 
     preload() {
@@ -14,6 +16,8 @@ export default class TitleScreen extends GameScene {
     }
 
     create() {
+        this.ctrl = createController(this, config.buttons);
+
         this.cameras.main.setBackgroundColor('#EDEDED');
         let title = this.add.text(
             this.cameras.main.centerX, 
@@ -29,6 +33,8 @@ export default class TitleScreen extends GameScene {
     }
 
     update(time, delta) {
-        
+        if(this.ctrl.isDown('confirm')) {
+            this.scene.start('GamePlay');
+        }
     }
 }
