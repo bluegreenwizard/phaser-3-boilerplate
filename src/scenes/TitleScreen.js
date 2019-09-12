@@ -30,11 +30,13 @@ export default class TitleScreen extends GameScene {
             }
         );
         title.setOrigin(0.5);
+
+        this.ctrl.on('confirm', () => {
+            this.scene.start('GamePlay');
+        });
     }
 
     update(time, delta) {
-        if(this.ctrl.isDown('confirm')) {
-            this.scene.start('GamePlay');
-        }
+        
     }
 }

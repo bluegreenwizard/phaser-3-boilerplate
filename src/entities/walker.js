@@ -34,7 +34,7 @@ export default class Walker extends Phaser.GameObjects.Sprite {
             { frameWidth: 16, frameHeight: 32 }
         )
     }
-
+        
     update(time, delta) {
         if (this.cursors.left.isDown) {
             this.body.setVelocityX(-50);
