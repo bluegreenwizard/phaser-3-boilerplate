@@ -1,4 +1,6 @@
 import Phaser from 'phaser';
+import createController from '../util/controller';
+import gameConfig from '../config';
 
 export default class Walker extends Phaser.GameObjects.Sprite {
     constructor(config) {
@@ -10,6 +12,8 @@ export default class Walker extends Phaser.GameObjects.Sprite {
         this.body.collideWorldBounds = true;
         this.cursors = this.scene.input.keyboard.createCursorKeys();
         
+        this.ctrl = createController(this.scene, gameConfig.playerControls);
+
         this.scene.anims.create({
             key: 'stand',
             frames: this.scene.anims.generateFrameNumbers('walker', { start: 0, end: 1 }),
@@ -36,11 +40,11 @@ export default class Walker extends Phaser.GameObjects.Sprite {
     }
         
     update(time, delta) {
-        if (this.cursors.left.isDown) {
+        if (this.ctrl.isDown('left')) {
             this.body.setVelocityX(-50);
             this.anims.play('walk', true);
             this.flipX = true;
-        } else if (this.cursors.right.isDown) {
+        } else if (this.ctrl.isDown('right')) {
             this.body.setVelocityX(50);
             this.anims.play('walk', true);
             this.flipX = false;
