@@ -27,13 +27,11 @@ export default function createController(scene, actions) {
 
     const _updateTimeouts = function () {
         for(let action in _keyboard) {
-            _keyboard[action].timeout = Math.min(_keyboard[action].timeout--, 0);
+            _keyboard[action].timeout = Math.min(_keyboard[action].timeout - 1, 0);
         }
     }
 
     return {
-        //TODO : update sprites to use new controller
-
         isDown(action) {
             if (_keyboard[action].timeout > 0) {
                 return false;

@@ -7,7 +7,7 @@ export default class GamePlay extends GameScene {
     }
 
     init() {
-
+        
     }
 
     preload() {
